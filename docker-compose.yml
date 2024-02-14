@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  fastapi:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - rabbitmq
+      - redis
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+  celery-worker:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - rabbitmq
+      - redis
