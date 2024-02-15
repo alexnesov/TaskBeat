@@ -25,7 +25,25 @@ System built using Python, Celery, RabbitMQ, FastAPI, Redis, and Docker. This pr
 - To access RabbitMQ: ```http://localhost:15672/```
 
 
-## General useful docker commands:
+## General useful Docker commands:
 
 
-```docker stop $(docker ps -aq) && docker rm $(docker ps -aq)```
+To stop all containers and remove them:
+
+- ```docker stop $(docker ps -aq) && docker rm $(docker ps -aq)```
+
+
+```
+.
+└── Taskbeat/
+    ├── app/
+    │   ├── __init__.py
+    │   ├── celery_worker.py
+    │   ├── dependencies.py
+    │   ├── main.py
+    │   ├── models.py
+    │   └── utils.py
+    ├── docker-compose.yml
+    ├── Dockerfile
+    └── requirements.txt
+```
