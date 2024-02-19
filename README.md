@@ -25,13 +25,15 @@ System built using Python, Celery, RabbitMQ, FastAPI, Redis, and Docker. This pr
 - To access RabbitMQ: ```http://localhost:15672/```
 
 
-## General useful Docker commands:
+## General useful commands:
 
 
 To stop all containers and remove them:
 
 - ```docker stop $(docker ps -aq) && docker rm $(docker ps -aq)```
 
+To stop all celery processes:
+- ```ps aux | grep celery | awk '{print $2}' | xargs kill```
 
 ```
 .
@@ -47,3 +49,9 @@ To stop all containers and remove them:
     ├── Dockerfile
     └── requirements.txt
 ```
+
+
+
+- docker run --name my-redis-container -d -p 6379:6379 redis
+- docker pull rabbitmq:management
+- docker run -d --name my-rabbit -p 5672:5672 -p 15672:15672 rabbitmq:management
