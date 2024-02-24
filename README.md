@@ -30,7 +30,12 @@ System built using Python, Celery, RabbitMQ, FastAPI, Redis, and Docker. This pr
 
 To stop all containers and remove them:
 
+- ```docker-compose down```
 - ```docker stop $(docker ps -aq) && docker rm $(docker ps -aq)```
+- ```docker image prune -a --force```
+
+To rebuild and restart Docker containers
+- ```docker-compose up --build```
 
 To stop all celery processes:
 - ```ps aux | grep celery | awk '{print $2}' | xargs kill```
